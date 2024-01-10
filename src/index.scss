@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-family: "ButterScotch", sans-serif;
+  background: #eff0f0;
+}
+
+@font-face {
+  font-family: "ButterScotch";
+  src: url("./assets/fonts/ButterScotch.woff2") format("woff2"),
+    url("./assets/fonts/ButterScotch.woff") format("woff"),
+    url("./assets/fonts/ButterScotch.otf") format("opentype"),
+    url("./assets/fonts/ButterScotch.ttf") format("truetype");
+}
