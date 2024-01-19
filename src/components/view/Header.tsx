@@ -1,23 +1,22 @@
 import { Box, Button, Container, Tab, Tabs, Typography } from '@mui/material'
-import viewBg from '../../assets/header_bg.svg'
 import icon from '../../assets/viewIcon.svg'
 import pro from '../../assets/proVerified.svg'
-import { useState } from 'react'
-import Gallery from './Gallery/Gallery'
-import About from './about-us/About.tsx'
+import { ChangeEvent, useState } from 'react'
+import About from './about/About.tsx'
 import Contact from './contact-us/Contact.tsx'
+import GalleryTwo from './gallery2/GalleryTwo.tsx'
 
 const Header = () => {
-    const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    };
-    
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const handleChange = ( _event: ChangeEvent<{}>, newValue: number) => {
+  setValue(newValue);
+};
     const renderComponent = () => {
     switch (value) {
       case 0:
-        return <Gallery />;
+        return <GalleryTwo />;
       case 1:
         return <About />;
       case 2:
@@ -27,46 +26,39 @@ const Header = () => {
     }
     };
   return (
-      <Box>
-          <Box sx={{
-              width: '100%',
-            //   display: 'flex',
-          }}>
-              <Box component='img' src={viewBg} sx={{
-              width: '100%',
-              display: 'flex',
-              }} />
-              <Box sx={{
-                   
-              }}>
-                <Container maxWidth='lg' sx={{
-                      backgroundColor:'#fff'
-                  }}>
-                    <Box sx={{
+      
+    <Box sx={{mt:'-20px'}}>
+        
+            <Box>
+              <Box  sx={{ backgroundColor: '#fff' }}>
+                <Box sx={{
                         display: 'flex',
                         position: 'relative',
                         }}>
                             <Box component='img' src={icon} sx={{
                                 display: 'flex',
                                 position: 'absolute',
-                                top: "-70px",
-                                
+                                top: {md:"-70px", sm:'-70px', xs:'-50px'},
+                                width: {md:'150px', sm:'130px', xs:'100px'},
+                                height: {md:'150px', sm:'130px', xs:'100px'},
+                                ml:2
                                 }} />
-                    </Box>
+                </Box>
                     
-                      <Box mt={14} sx={{
+              <Box  p={2} sx={{
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent:'space-between'
+                          justifyContent: 'space-between',
+                          mt:{md:10, sm:8, xs:7}
                     }}>
-                        <Box display='flex' flexDirection='column' gap={1}>
+                    <Box display='flex' flexDirection='column' gap={1}>
                             <Typography>Brand New</Typography>
                             <Typography>Name</Typography>
                             <Typography>Location</Typography>
                             <Typography>Category</Typography>
                             <Box component='img' src={pro} /> 
-                          </Box>
-                          <Box display='flex' flexDirection='column' gap={1}>
+                    </Box>
+                    <Box display='flex' flexDirection='column' gap={1}>
                               <Button sx={{
                                     display: 'flex',
                                     textTransform:'capitalize',
@@ -99,37 +91,110 @@ const Header = () => {
                                       background: '#DDD',
                                     }
                                 }}>Message</Button>
-                          </Box>
                     </Box>
-                      
-                    <Box mt={4} sx={{ backgroundColor: '#eff0f0', p: 1, borderRadius: 4, borderBottom: '2px solid #494949' }}>
-                        <Tabs
-                            value={value}
-                            onChange={handleChange}
-                            indicatorColor="primary" // Set the color of the unselected tabs' indicator/bar
-                            textColor="inherit" // Set the color of the text
-                            sx={{ backgroundColor: 'transparent' }} // Set the background color of the Tabs container to be transparent
-                        >
-                            <Tab label="Gallery" sx={{ color: 'black', fontWeight: '800' }} />
-                            <Tab label="About Us" sx={{ color: 'black', fontWeight: '800' }} />
-                            <Tab
-                            label="Contact Us"
-                            sx={{
-                                color: 'black',
-                                fontWeight: '800',
-                            }}
-                            />
-                        </Tabs>
-                    </Box>
-                    <Box mt={4}>
-                        {renderComponent()}
-                    </Box>
-                </Container>
-               
               </Box>
-              
-          </Box>
-      </Box>
+              <Box mt={4} sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderTop: "0.5px solid rgba(0, 0, 0, 0.43)",
+                        borderBottom: "0.5px solid rgba(0, 0, 0, 0.43)",
+                        }}>
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                indicatorColor="primary"
+                                textColor="inherit"
+                                sx={{ backgroundColor: 'transparent',  }}
+                            >
+                                <Tab
+                                  label="Gallery"
+                                  sx={{
+                                      color: 'black',
+                                      fontWeight: 500,
+                                      fontSize: '14px',
+                                      position: 'relative',
+                                      '&::before': {
+                                          content: '""',
+                                          position: 'absolute',
+                                          bottom: '0',
+                                          left: '50%',
+                                          transform: 'translateX(-50%)',
+                                          width: '0',
+                                          height: '2px',
+                                          backgroundColor: 'blue',
+                                          transition: 'width 0.3s ease',
+                                      },
+                                      '&:hover::before': {
+                                          width: '100%',
+                                      },
+                                      '&.Mui-selected::before': {
+                                          width: '100%',
+                                      },
+                                  }}
+                              />
+
+
+                                <Tab
+                                    label="About Us"
+                                    sx={{
+                                      color: 'black',
+                                      fontWeight: 500,
+                                      fontSize: '14px',
+                                      position: 'relative',
+                                      '&::before': {
+                                          content: '""',
+                                          position: 'absolute',
+                                          bottom: '0',
+                                          left: '50%',
+                                          transform: 'translateX(-50%)',
+                                          width: '0',
+                                          height: '2px',
+                                          backgroundColor: 'blue',
+                                          transition: 'width 0.3s ease',
+                                      },
+                                      '&:hover::before': {
+                                          width: '100%',
+                                      },
+                                      '&.Mui-selected::before': {
+                                          width: '100%',
+                                      },
+                                  }}
+                                />
+                                <Tab
+                                    label="Contact Us"
+                                    sx={{
+                                      color: 'black',
+                                      fontWeight: 500,
+                                      fontSize: '14px',
+                                      position: 'relative',
+                                      '&::before': {
+                                          content: '""',
+                                          position: 'absolute',
+                                          bottom: '0',
+                                          left: '50%',
+                                          transform: 'translateX(-50%)',
+                                          width: '0',
+                                          height: '2px',
+                                          backgroundColor: 'blue',
+                                          transition: 'width 0.3s ease',
+                                      },
+                                      '&:hover::before': {
+                                          width: '100%',
+                                      },
+                                      '&.Mui-selected::before': {
+                                          width: '100%',
+                                      },
+                                  }}
+                                />
+                            </Tabs>
+              </Box>
+              <Box mt={4}>
+                  {renderComponent()}
+              </Box>
+              </Box>
+            </Box>
+        </Box>
   )
 }
 

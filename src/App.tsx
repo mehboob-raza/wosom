@@ -1,25 +1,21 @@
 import { Route, Routes } from "react-router-dom";
-import PageHome from "./pages/pageHome/PageHome";
 import ViewPage from "./components/view/ViewPage";
-import EditPage from "./components/edit/EditPage";
-import Template from "./pages/DemoTempelate/Template";
-import Gallery from "./components/view/Gallery/Gallery";
-import Header from "./components/view/Header";
-
+import Element from "./components/edit/element/Element";
+import Design from "./components/edit/designs/Design";
 
 
 const App = () => {
   return (
-    <>
-      <Header />
-    </>
-      // <Routes>
-        /* <Route path="/" element={<PageHome />} />
-        <Route path='/viewPage' element={<ViewPage />} />
-        <Route path='/editPage' element={<EditPage />} />
-        <Route path='/demoTemplate' element={<Template />} /> */
     
-    // </Routes>
+      <Routes>
+      <Route path="/" element={<ViewPage toggleSidebar={function (): void {
+        throw new Error("Function not implemented.");
+      } } />} />
+      
+      <Route path="/elements" element={ <Element /> } />
+      <Route path="/design" element={ <Design /> } />
+        
+    </Routes>
     
   );
 };
